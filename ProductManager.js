@@ -79,3 +79,68 @@ class ProductManager {
 }
 
 module.exports = ProductManager;
+
+// Definir una ubicación de archivo para tus pruebas
+const testFilePath = 'testProducts.json';
+
+// Crear una instancia de ProductManager para realizar pruebas
+const productManager = new ProductManager(testFilePath);
+
+// Función de prueba para agregar un producto
+function testAddProduct() {
+    try {
+        const newProduct = {
+            title: 'Nuevo Producto',
+            description: 'Descripción del nuevo producto',
+            price: 19.99,
+            thumbnail: 'new_product.jpg',
+            code: 'NP001',
+            stock: 10,
+        };
+
+        productManager.addProduct(newProduct);
+        console.log('Producto agregado con éxito.');
+    } catch (error) {
+        console.error('Error al agregar el producto:', error.message);
+    }
+}
+
+// Función de prueba para obtener todos los productos
+function testGetProducts() {
+    const products = productManager.getProducts();
+    console.log('Lista de productos:');
+    console.log(products);
+}
+
+// Función de prueba para actualizar un producto
+function testUpdateProduct(productId) {
+    try {
+        const updatedProduct = {
+            title: 'Producto Actualizado',
+            price: 29.99,
+        };
+
+        productManager.updateProduct(productId, updatedProduct);
+        console.log('Producto actualizado con éxito.');
+    } catch (error) {
+        console.error('Error al actualizar el producto:', error.message);
+    }
+}
+
+// Función de prueba para eliminar un producto
+function testDeleteProduct(productId) {
+    try {
+        productManager.deleteProduct(productId);
+        console.log('Producto eliminado con éxito.');
+    } catch (error) {
+        console.error('Error al eliminar el producto:', error.message);
+    }
+}
+
+// Ejecutar pruebas
+testAddProduct(); // Agregar un nuevo producto
+testGetProducts(); // Mostrar la lista de productos
+testUpdateProduct(1); // Actualizar un producto por su ID 
+testDeleteProduct(1); // Eliminar un producto por su ID 
+testGetProducts(); // Mostrar la lista de productos actualizada
+
