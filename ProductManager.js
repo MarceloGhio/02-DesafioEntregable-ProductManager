@@ -14,7 +14,7 @@ class ProductManager {
             this.products = JSON.parse(data);
             this.updateProductIdCounter();
         } catch (err) {
-            // File does not exist or is empty, no need to do anything.
+            // Si el archivo no existe o esta vacio no se hace nada
         }
     }
 
